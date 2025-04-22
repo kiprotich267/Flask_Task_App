@@ -1,27 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Task App</title>
-    <style>
-        ul {
-           
-            color: aqua;
-            list-style-type: decimal;
+{% extends "base.html" %}
 
-        }
-    </style>
-</head>
-<body>
-    <h1>users</h1>
-   <ul>
-    {% for user in users%}
-        <li>
-            {{ user.first_name }} {{ user.last_name }}
-        </li>
-    {% endfor %}
-   </ul>
-    
-</body>
-</html>
+
+{% block content %}
+<h1>Welcome to Flask Task App</h1>
+  
+{% endblock %}
