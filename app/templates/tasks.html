@@ -1,5 +1,27 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h1 class="text-primary">Tasks</h1>
+
+    <h1>My Tasks</h1>
+   
+  
+<form action="" method="post">
+       {{ form.title.label(class="form-label") }}
+       {{ form.title(size=100, class="form-control w=50") }}
+  
+       {{ form.description.label (class="form-label") }}
+       {{ form.description (class="form-control w=50") }}
+
+    
+       {{ form.completed.label }}
+       {{ form.completed }}
+
+       {{ form.submit }}
+
+      </form>
+   
+    <ul>
+    {{ tasks }}
+</ul> 
+
 {% endblock %}

@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+`
+{% block content %}
+<h1>user input</h1>
+
+<form action="" method="post">
+    
+
+    {{user_form.username.label(class="form-label")}}
+    {{user_form.username(size=50, class="form-control w=50")}}
+    
+    {{user_form.first_name.label(class="form-label")}}
+    {{user_form.first_name(size=50, class="form-control w=50")}}
+
+    {{user_form.last_name.label(class="form-label")}}
+    {{user_form.last_name(size=50, class="form-control w=50")}}
+    
+    {{user_form.password.label(class="form-label")}}
+    {{user_form.password(size=100, class="form-control w=50")}}
+
+    {{user_form.submit}}
+</form>
+<!-- <div class="container mt-4">
+    <h1 class="text-center mb-4">Users</h1>
+    <ul class="list-group">
+        {% for user in users %}
+            <li class="list-group-item">
+                {{ user.first_name }} {{ user.last_name }}
+            </li>
+        {% endfor %}
+    </ul>
+</div> -->
+{% endblock %}
