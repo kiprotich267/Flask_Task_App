@@ -1,9 +1,87 @@
 {% extends "base.html" %}
 
-
 {% block content %}
-<h1>Welcome to Flask Task App</h1>
-<ul>
-{{users}}
-</ul>
+
+
+<div class="container py-5">
+    
+    <div class="py-5 text-center">
+        <h1 class="display-4 mb-3 text-primary">Welcome to Flask_Task_Manager</h1>
+        <p class="lead text-dark">Users and Tasks in Flask_Task_Manager</p>
+       
+       
+      </div>
+
+    <div class="row justify-content-center g-4"> 
+      <!-- Total Users -->
+      <div class="col-md-4">
+        <div class="card border-info shadow-sm text-center">
+          <div class="card-body">
+            <h5 class="card-title">Total Users</h5>
+            <p class="display-6 fw-bold text-success">{{ user_count }}</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Total Tasks -->
+      <div class="col-md-4">
+        <div class="card border-success shadow-sm text-center">
+          <div class="card-body">
+            <h5 class="card-title">Total Tasks</h5>
+            <p class="display-6 fw-bold text-success">{{ task_count }}</p>
+          </div>
+        </div>
+      </div>
+    </div> 
+
+      <div>
+  <div class="row mt-5 ">
+    <div class="col-lg-6 "><div>
+      <h3>Users</h3>
+      
+      <ul class="list-group">
+        {% for user in users|reverse %}
+        <li style="list-style: decimal;" class="list-group-item d-flex justify-content-between align-items-center list-item">
+          
+            <p class="me-3">{{ user }}</p>
+          
+            <form action="{{ url_for('delete_user', user_id=user.id) }}" method="post" style="display: inline;" onsubmit="console.log('Submitting delete form'); return confirm('Are you sure you want to delete this user?');">
+              <input type="submit" value="Delete" class="btn btn-danger btn-sm" id="delete-user-{{ user.id }}">
+            </form>
+         
+        </li>
+        {% endfor %}
+      </ul>
+    
+    </div></div>
+    <div class="col-lg-6"><div>
+      <h3>Tasks</h3>
+      <ul class="list-group">
+        {% for task in tasks|reverse %}
+        <li class="list-group-item d-flex justify-content-between align-items-center">  
+            <div >    
+            <form action="{{ url_for('toggle_task', task_id=task.id) }}" method="post" style="display: inline;">
+               <input type="checkbox"
+               {% if task.completed%} checked {% endif %}
+               onchange="this.form.submit()"
+               id="task-{{ task.id }}"
+               >
+            </form> 
+            <p>{{ task.title }}</p>
+            <p>{{ task.description }}</p>
+        </div> 
+        <form action="{{ url_for('delete_task', task_id=task.id) }}" method="post" style="display: inline;" onsubmit="console.log('Submitting delete form'); return confirm('Are you sure you want to delete this task?');">
+           <input type="submit" value="Delete" class="btn btn-danger" id="delete-{{ task.id }}">
+          </form>
+        </li>
+        {% endfor %}
+      </ul>
+    </div></div>
+  </div>
+      </div>
+         </div>
+
+
+ 
+
 {% endblock %}

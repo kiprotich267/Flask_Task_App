@@ -4,7 +4,7 @@ from wtforms.validators import DataRequired
 class TaskForm(FlaskForm):
    title = StringField('Task Title', validators=[DataRequired()])
    description = TextAreaField('Task Description', validators=[DataRequired()])
-   completed = BooleanField('Completed', validators=[DataRequired()])
+   completed = BooleanField('Completed' )
    submit = SubmitField('Submit')
 
 class UserForm(FlaskForm):

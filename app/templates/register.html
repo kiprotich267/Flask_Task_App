@@ -1,33 +1,32 @@
 {% extends "base.html" %}
-`
+
 {% block content %}
-<h1>user input</h1>
 
-<form action="" method="post">
-    
+<div class="container">
 
-    {{user_form.username.label(class="form-label")}}
-    {{user_form.username(size=50, class="form-control w=50")}}
-    
-    {{user_form.first_name.label(class="form-label")}}
-    {{user_form.first_name(size=50, class="form-control w=50")}}
+<h1>User Registration</h1>
 
-    {{user_form.last_name.label(class="form-label")}}
-    {{user_form.last_name(size=50, class="form-control w=50")}}
-    
-    {{user_form.password.label(class="form-label")}}
-    {{user_form.password(size=100, class="form-control w=50")}}
 
-    {{user_form.submit}}
+<form action="{{url_for('register')}}" method="post">
+
+  {{ user_form.hidden_tag() }}
+
+  {{ user_form.username.label(class="form-label") }}
+  {{ user_form.username(class="form-control w=50") }}
+
+
+  {{ user_form.first_name.label(class="form-label") }}
+  {{ user_form.first_name(class="form-control w=50") }}
+
+  {{ user_form.last_name.label(class="form-label") }}
+  {{ user_form.last_name(class="form-control w=50") }}
+
+  {{ user_form.password.label(class="form-label") }}
+  {{ user_form.password(class="form-control w=50") }}
+  
+  {{ user_form.submit(class="btn-primary") }}
+
 </form>
-<!-- <div class="container mt-4">
-    <h1 class="text-center mb-4">Users</h1>
-    <ul class="list-group">
-        {% for user in users %}
-            <li class="list-group-item">
-                {{ user.first_name }} {{ user.last_name }}
-            </li>
-        {% endfor %}
-    </ul>
-</div> -->
+
+</div>
 {% endblock %}
