@@ -1,8 +1,13 @@
-from app import db, app
+from app import db, app, login_manager
+from flask_login import UserMixin
 
 
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.get(user_id)
 
-class User(db.Model):
+
+class User(db.Model, UserMixin):
   
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(50), nullable=False, unique=True)
@@ -14,8 +19,7 @@ class User(db.Model):
     
     def __repr__(self):
         return f"{self.first_name} {self.last_name}"
-
-    
+ 
 class Task(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
